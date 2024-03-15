@@ -1,0 +1,12 @@
+version: 3
+
+services:
+  springboot-firebase-demo1:
+    image: //:latest
+    hostname: 0.0.0.0
+    ports:
+      - 8087:8087
+    environment:
+
+    expose:
+      - 8087

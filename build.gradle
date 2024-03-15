@@ -1,0 +1,70 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.pr'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+ext {
+    springBootVersion = "3.2.3"
+    lombokVersion = "1.18.24"
+    assertjVersion = "3.23.1"
+    junitVersion = "5.9.1"
+    mapStructVersion = "1.5.5.Final"
+    jacksonVersion = '2.16.1'
+    mockitoVersion = "5.3.1"
+    project.archivesBaseName = "java-template-service"
+    project.version = "s2"
+}
+
+
+
+
+apply plugin: 'org.springframework.boot'
+
+bootJar{
+    archiveFileName= 'app.jar'
+}
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    configureEach {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation "org.springframework.boot:spring-boot-starter-log4j2"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'org.postgresql:postgresql'
+// https://mvnrepository.com/artifact/com.h2database/h2
+    runtimeOnly 'com.h2database:h2'
+    implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+    testImplementation "org.assertj:assertj-core:${assertjVersion}"
+
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
