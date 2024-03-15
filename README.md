@@ -1,5 +1,5 @@
 # Introduction
-This is a sample dockerized spring boot application which is pushed to the 
+This is a sample dockerized spring boot application which is pushed to the GCR & deployed on cloud run
 - Google Container Registry - private Docker repository that works with popular continuous delivery systems & 
 - Cloud Run - managed compute platform that lets you run containers directly on top of Google's scalable infrastructure
 
