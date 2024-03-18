@@ -64,12 +64,13 @@ jobs:
       - uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/develop'
 
       # Step 9: Deploy our app to google cloud
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloudrun@v2'
         with:
+          project_id: 'springboot-cloudrun-417018'
           service: 'springboot-cloudrun'
           flags: '--allow-unauthenticated'
           image:  praveenr4u/springboot-cloudrun:latest
