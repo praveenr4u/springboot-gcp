@@ -20,9 +20,6 @@ ext {
     project.version = "s2"
 }
 
-
-
-
 apply plugin: 'org.springframework.boot'
 
 bootJar{
@@ -47,17 +44,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-
     implementation "org.springframework.boot:spring-boot-starter-log4j2"
+    // https://mvnrepository.com/artifact/com.google.cloud.sql/postgres-socket-factory
+    implementation group: 'com.google.cloud.sql', name: 'postgres-socket-factory', version: '1.17.0'
+    // https://mvnrepository.com/artifact/com.google.cloud/spring-cloud-gcp-starter-sql-postgresql
+    implementation "com.google.cloud:spring-cloud-gcp-starter-sql-postgresql:5.0.3"
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'org.postgresql:postgresql'
-// https://mvnrepository.com/artifact/com.h2database/h2
     runtimeOnly 'com.h2database:h2'
     implementation "org.mapstruct:mapstruct:${mapStructVersion}"
     testImplementation "org.assertj:assertj-core:${assertjVersion}"
-
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

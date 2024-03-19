@@ -78,5 +78,6 @@ jobs:
             SPRING_DATASOURCE_DRIVER-CLASS-NAME=org.postgresql.Driver
             SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }}
             SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USER }}
-            SPRING_DATASOURCE_URL=${{ secrets.DB_URL }}
+            //SPRING_DATASOURCE_URL=${{ secrets.DB_URL }}
+            SPRING_CLOUD_GCP_SQL_INSTANCE-CONNECTION-NAME=${{ secrets.DB_INSTANCE_CONNECTION_NAME }}
         if: github.ref == 'refs/heads/develop'
